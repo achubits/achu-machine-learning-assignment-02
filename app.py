@@ -8,6 +8,8 @@ from __future__ import annotations
 import html
 import io
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 import altair as alt
@@ -109,7 +111,39 @@ def section(title: str) -> None:
     st.markdown(f'<div class="section">{html.escape(title)}</div>', unsafe_allow_html=True)
 
 
+def ensure_model_artifacts() -> None:
+    """Build the saved model bundle if the repo was pushed without the generated artifacts."""
+    if REGISTRY_PATH.is_file() and any(MODEL_DIR.glob("*.joblib")):
+        return
+
+    script = ROOT / "train_models.py"
+    if not script.is_file():
+        st.error("Training script is missing: `train_models.py`.")
+        st.stop()
+
+    st.warning(
+        "Saved model files were not found, so the app is generating them from the training script once. "
+        "This can take a minute or two on first launch."
+    )
+    try:
+        completed = subprocess.run(
+            [sys.executable, str(script)],
+            cwd=str(ROOT),
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except subprocess.CalledProcessError as exc:
+        stderr = exc.stderr.strip() or exc.stdout.strip() or str(exc)
+        st.error(f"Automatic model generation failed: {stderr}")
+        st.stop()
+
+    if completed.stdout:
+        st.caption(completed.stdout.strip().splitlines()[-1])
+
+
 def load_registry() -> dict:
+    ensure_model_artifacts()
     if not REGISTRY_PATH.is_file():
         st.error(
             "No saved models found. Run `python train_models.py`, then commit the `model/` folder "
