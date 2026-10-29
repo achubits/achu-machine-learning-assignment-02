@@ -1,0 +1,104 @@
+{
+  "target_column": "diagnosis",
+  "id_column": "id",
+  "feature_columns": [
+    "radius_mean",
+    "texture_mean",
+    "perimeter_mean",
+    "area_mean",
+    "smoothness_mean",
+    "compactness_mean",
+    "concavity_mean",
+    "concave points_mean",
+    "symmetry_mean",
+    "fractal_dimension_mean",
+    "radius_se",
+    "texture_se",
+    "perimeter_se",
+    "area_se",
+    "smoothness_se",
+    "compactness_se",
+    "concavity_se",
+    "concave points_se",
+    "symmetry_se",
+    "fractal_dimension_se",
+    "radius_worst",
+    "texture_worst",
+    "perimeter_worst",
+    "area_worst",
+    "smoothness_worst",
+    "compactness_worst",
+    "concavity_worst",
+    "concave points_worst",
+    "symmetry_worst",
+    "fractal_dimension_worst"
+  ],
+  "labels": {
+    "positive": "Malignant",
+    "negative": "Benign"
+  },
+  "decision_threshold": 0.5,
+  "models": {
+    "Logistic Regression": {
+      "file": "logistic_regression.joblib",
+      "best_params": {
+        "C": 1
+      },
+      "cv_mcc_mean": 0.9405176880662275,
+      "cv_mcc_std": 0.011120476388271539
+    },
+    "Decision Tree": {
+      "file": "decision_tree.joblib",
+      "best_params": {
+        "criterion": "entropy",
+        "max_depth": 5,
+        "min_samples_leaf": 5
+      },
+      "cv_mcc_mean": 0.8828166486512747,
+      "cv_mcc_std": 0.059512382949587245
+    },
+    "KNN": {
+      "file": "knn.joblib",
+      "best_params": {
+        "n_neighbors": 7,
+        "weights": "uniform"
+      },
+      "cv_mcc_mean": 0.9300779628293224,
+      "cv_mcc_std": 0.03300668179853936
+    },
+    "Naive Bayes": {
+      "file": "naive_bayes.joblib",
+      "best_params": {
+        "var_smoothing": 1e-09
+      },
+      "cv_mcc_mean": 0.8493820231700063,
+      "cv_mcc_std": 0.05085348381942325
+    },
+    "Support Vector Machine": {
+      "file": "svm.joblib",
+      "best_params": {
+        "C": 10,
+        "gamma": 0.01
+      },
+      "cv_mcc_mean": 0.9538531046114631,
+      "cv_mcc_std": 0.025117926488650067
+    }
+  },
+  "dataset": {
+    "source_file": "breast_cancer.csv",
+    "total_rows": 569,
+    "train_rows": 455,
+    "test_rows": 114,
+    "test_malignant": 42,
+    "test_benign": 72,
+    "cv_folds": 5,
+    "random_seed": 711,
+    "test_size": 0.2
+  },
+  "library_versions": {
+    "python": "3.13.18",
+    "scikit-learn": "1.6.1",
+    "pandas": "2.2.3",
+    "numpy": "2.1.3"
+  }
+}
