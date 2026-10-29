@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Earlier candidate datasets and the assignment brief are not part of this project.
+diabetic_data.csv
+heart.csv
+description.pdf
