@@ -228,6 +228,7 @@ st.markdown(
       <p>Benign vs malignant classification of breast tumour biopsies (Wisconsin Diagnostic data).
       Upload labelled test data and see how each saved model performs - no retraining involved.</p>
       <span class="tag">{len(models)} trained models</span>
+    <p class="byline">Developed by Achuthanandan J || 2026AK05199 || Machine Learning Assignment-2</p>
       <span class="tag">{len(feature_columns)} cell-nucleus features</span>
       <span class="tag">trained on {dataset.get('train_rows', '?')} tumours</span>
       <span class="tag">tuned with {dataset.get('cv_folds', '?')}-fold cross-validation</span>
