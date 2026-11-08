@@ -42,8 +42,7 @@ Citation: W. N. Street, W. H. Wolberg and O. L. Mangasarian (1993), *Nuclear fea
 
 ## c. GitHub Repository Link
 
-TODO: paste the repository URL here.
-
+(https://github.com/achubits/achu-machine-learning-assignment-02/)
 ## d. Models Used
 
 | Model | Implementation | Hyperparameters searched |
@@ -97,8 +96,7 @@ MCC is the primary ranking metric because it incorporates true and false positiv
 <!-- MODEL_RESULTS_END -->
 
 ## Streamlit App
-
-Live app: TODO - paste the Streamlit Community Cloud URL here.
+(https://achu-machine-learning-assignment-02-4my8tcbrsnlbndfdfphjpe.streamlit.app/#tumour-insight)
 
 | Assignment requirement | Where it is in the app |
 |---|---|
@@ -136,8 +134,6 @@ pip install -r requirements.txt
 python train_models.py
 streamlit run app.py
 ```
-
-Training finishes in about a minute. Commit the generated `model/`, `reports/`, `test_data.csv` and the updated `README.md`.
 
 ## Deploy on Streamlit Community Cloud
 
